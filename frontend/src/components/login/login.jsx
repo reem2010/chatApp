@@ -16,7 +16,7 @@ const Login = () => {
                 <input type="password" id="pass"/>
                 <div>
                     <input type="checkbox" id='show-pass'/>
-                    <label htmlFor="show-pass">show password</label>
+                    <label htmlFor="show-pass">show password </label>
                 </div>
                 <Link to='/signup'>create accout</Link>
                 <input type="submit" value='login'/>
