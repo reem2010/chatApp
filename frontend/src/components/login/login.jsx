@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom'
 import '../../style/login.css'
 
+async function checked(e) {
+    if (e.target.checked) {
+        document.querySelector('.change').type = 'text'
+    }
+    else {
+        document.querySelector('.change').type = 'password'
+    }
+}
 async function clicked(e) {
     e.preventDefault()
     const email = e.target.children.email.value
     const pass = e.target.children.pass.value
     async function post_data() {
-        let post = await fetch('http://localhost:3000/login', {
+        let post = await fetch('http://localhost:3000/auth/login', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -18,12 +26,13 @@ async function clicked(e) {
             })
         })
         let data = post
-        console.log(data.status)
+        if (data.status == 201) {
+            window.location = 'ok'
+        }
     }
     post_data()
 }
 const Login = () => {
-
     return (
         <>
         <div className="form-container">
@@ -34,9 +43,9 @@ const Login = () => {
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email"/>
                 <label htmlFor="pass">Password</label>
-                <input type="password" id="pass"/>
+                <input className='change' type="password" id="pass"/>
                 <div>
-                    <input type="checkbox" id='show-pass'/>
+                    <input onClick={checked} type="checkbox" id='show-pass'/>
                     <label htmlFor="show-pass">show password </label>
                 </div>
                 <Link to='/signup'>create accout</Link>

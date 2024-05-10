@@ -28,7 +28,7 @@ async function clicked(e) {
         if (pass.length < 8 || pass != virfy_pass || email < 10) {
             return
         }
-        let post = await fetch('http://localhost:3000/register', {
+        let post = await fetch('http://localhost:3000/auth/register', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -41,7 +41,9 @@ async function clicked(e) {
             })
         })
         let data = post
-        console.log(data)
+        if (data.status == 201) {
+            window.location.replace('http://localhost:5173/login')
+        }
     }
     post_data()
 }

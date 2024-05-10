@@ -1,12 +1,14 @@
-import { prisma } from "../../util/client.js";
+import prisma from "../../client.js"
 
 export async function createUser(userData) {
-  const user = await prisma.User.create({
+  const user = await prisma.user.create({
     data: userData,
   });
   return user;
 }
-
+export async function get_user(email) {
+  return await prisma.user.findUnique({ where: {email: email} })
+}
 export async function deleteUser(userEmail, userPassword) {
   if (
     await prisma.user.findUnique({

@@ -10,5 +10,4 @@ try {
  res.status(401).json({ error: 'Invalid token' });
  }
  };
-
-module.exports = verifyToken;
+export default verifyToken
