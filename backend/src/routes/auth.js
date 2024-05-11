@@ -20,7 +20,8 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ userId: email_is_exist.id }, 'your-secret-key', {
     expiresIn: '1h',
     });
-    res.status(200).json({ token });
+       res.status(200)
+       res.cookie('token', token)
     } catch (error) {
     res.status(500).json({ error: `Login ${error}` });
     }
