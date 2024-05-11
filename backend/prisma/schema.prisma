@@ -47,4 +47,3 @@ model ChatMembers {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@id([chatId, userId])
 }
-

@@ -5,15 +5,24 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon  src/app.js"
+    "start": "nodemon  src/app.js",
+    "devStart": "nodemon client.js"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
     "@prisma/client": "^5.13.0",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "prisma": "^5.13.0"
