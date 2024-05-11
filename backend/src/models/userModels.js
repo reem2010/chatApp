@@ -1,4 +1,4 @@
-import prisma from "../../client.js"
+import { prisma } from "./client.js";
 
 export async function createUser(userData) {
   const user = await prisma.user.create({
@@ -7,7 +7,7 @@ export async function createUser(userData) {
   return user;
 }
 export async function get_user(email) {
-  return await prisma.user.findUnique({ where: {email: email} })
+  return await prisma.user.findUnique({ where: { email: email } });
 }
 export async function deleteUser(userEmail, userPassword) {
   if (
@@ -17,7 +17,7 @@ export async function deleteUser(userEmail, userPassword) {
       },
     })
   ) {
-    const user = await prisma.User.delete({
+    const user = await prisma.user.delete({
       where: {
         email: userEmail,
         password: userPassword,
@@ -36,7 +36,7 @@ export async function updateUser(userEmail, userData) {
       },
     })
   ) {
-    const user = await prisma.User.update({
+    const user = await prisma.user.update({
       where: {
         email: userEmail,
       },
