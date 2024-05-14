@@ -17,12 +17,12 @@ export const createChat = async (req, res) => {
   if (await ChatModel.getChat(senderId, user.id)) {
     return res.json({ message: "chat already exist" });
   }
-  const chat = await ChatModel.createChat(senderId, +recieverId);
+  const chat = await ChatModel.createChat(senderId, user.id);
   res.status(200).json({ message: "chat created successfully" });
 };
 export const deleteChat = async (req, res) => {
   const chatId = req.params.chatId;
-  if (ChatModel.deleteChat(chatId)) {
+  if (await ChatModel.deleteChat(+chatId)) {
     return res.status(200).json({ message: "chat deleted successfully" });
   }
   res.status(404).json({ message: "chat doesn't exist" });
