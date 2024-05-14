@@ -22,7 +22,6 @@ export const getChat = async (senderId, recieverId) => {
       ],
     },
   });
-  console.log(chat);
   return chat;
 };
 
@@ -44,12 +43,12 @@ export const updateChat = async (newName, chatId) => {
 
 export const deleteChat = async (chatId) => {
   try {
-    const chat = await prisma.chat.delete({
+    await prisma.chat.delete({
       where: {
         id: chatId,
       },
     });
-    return chat;
+    return true;
   } catch {
     return null;
   }
@@ -80,7 +79,6 @@ export const createChat = async (senderId, recieverId) => {
         },
       },
     });
-    console.log(message);
     return message;
   } catch {
     return null;

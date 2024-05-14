@@ -24,7 +24,7 @@ export const createMessage = async (userId, chatId, content) => {
       },
     });
     return message;
-  } catch {
+  } catch(err) {
     return null;
   }
 };

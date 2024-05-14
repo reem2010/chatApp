@@ -2,7 +2,7 @@
 
 import router from './auth.js';
 import express from 'express'
-import verifyToken from '../../middleWare/authMiddleware.js'
+import verifyToken from '../middleWare/authMiddleware.js'
  const router2 = express.Router();
 // Protected route
  router.get('/', verifyToken, (req, res) => {
