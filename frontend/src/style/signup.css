@@ -1,0 +1,45 @@
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+.form-container .app-name {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.form-container .app-name p {
+    font-size: 30px;
+    font-weight: bold;
+    color: cadetblue;
+}
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-container a {
+    color: rgb(85, 85, 229);
+    text-decoration: none;
+    margin-top: 7px;
+    font-size: 17px;
+}
+form input {
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    height: 30px;
+}
+form input[type=submit] {
+    font-size: 20px;
+    margin-top: 10px;
+}
+form input[type=checkbox] {
+    height: fit-content;
+}
