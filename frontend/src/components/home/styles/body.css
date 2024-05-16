@@ -1,0 +1,57 @@
+.chatBody {
+    display: grid;
+    grid-template-rows: 50px auto 60px;
+    padding: 15px;
+}
+
+.chatInput {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgInput {
+    min-width: 50vw;
+    min-height: 30px;
+    border-radius: 15px;
+    padding: 0 10px;
+}
+
+.smile {
+    background-color: black;
+    border: 0;
+    cursor: pointer;
+    font-size: larger;
+    color: yellow;
+    width: 50px;
+    max-height: 30px;
+    margin-top: 5px
+}
+
+.msg-send {
+    border-radius: 15px;
+    min-height: 30px;
+    width: 50px;
+}
+
+.emoji-picker {
+    max-height: 350px;
+    max-width: 250px;
+    display: none;
+    position: fixed !important;
+    bottom: calc(100vh - 85vh) !important;
+}
+
+.chatBox {
+    background-color: rgb(68, 68, 68);
+    border-radius: 15px;
+    padding: 10px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: blue #000000;
+}
+
+.message{
+    padding: 5px;
+}

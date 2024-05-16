@@ -8,11 +8,14 @@ import cookieParser from "cookie-parser";
 const app = express()
 app.use(cookieParser());
 app.use(express.json());
-// const corsOptions = { 
-//   origin: '*', 
-//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204 
-// };
- app.use(cors());
+const corsOptions = {
+  origin: process.env.HOST, // Your frontend origin
+  credentials: true , // Set to true if sending credentials
+  // allowedHeaders: ['Content-Type', 'Authorization'], // Adjust allowed headers as needed
+  methods: 'GET, POST, PUT, DELETE, OPTIONS', // Adjust allowed methods as needed
+};
+
+ app.use(cors(corsOptions));
  app.use('/auth', userRouter);
  app.use('/chats', chatRouter)
  app.use('/message', messageRouter)
