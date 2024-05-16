@@ -3,7 +3,19 @@ import { get_user } from "../models/userModels.js";
 
 export const allChat = async (req, res) => {
   const userId = req.userId;
-  const chats = await ChatModel.getChats(userId);
+  let chats = await ChatModel.getChats(userId);
+  chats = chats.map((chat) => {
+    if (chat.name === "") {
+      const rec = chat.members.filter((mem) => {
+        return mem.user.id != userId;
+      });
+      chat.name = rec[0].user.name;
+    }
+    return {
+      id: chat.id,
+      name: chat.name,
+    };
+  });
   res.status(200).json(chats);
 };
 

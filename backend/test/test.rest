@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "email": "reem@gmail.com",
+    "email": "reemT@gmail.com",
     "username": "reem",
     "password": "password"
 }
@@ -15,8 +15,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "reem@gmail.com",
-    "password": "password"
+    "email": "123@gmail.com",
+    "password": "12345678"
 }
 
 ###
@@ -26,7 +26,7 @@ POST http://localhost:3000/chats/
 Content-Type: application/json
 
 {
-    "recieverEmail": "reem2@gmail.com"
+    "recieverEmail": "reem@gmail.com"
 }
 
 
@@ -40,7 +40,7 @@ POST http://localhost:3000/auth/logout
 DELETE  http://localhost:3000/chats/1
 
 ###
-GET http://localhost:3000/message/?chatId=2
+GET http://localhost:3000/message/?chatId=3
 
 ###
 
@@ -52,3 +52,5 @@ Content-Type: application/json
     "chatId": "2",
     "content": "tarek"
 }
+###
+GET http://localhost:3000/chats                                                                 

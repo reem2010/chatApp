@@ -9,6 +9,19 @@ export const getChats = async (userId) => {
         },
       },
     },
+    include: {
+      members: {
+        include: {
+          user: {
+            select: {
+              name: true,
+              email: true,
+              id: true,
+            },
+          },
+        },
+      },
+    },
   });
   return chats;
 };
@@ -49,7 +62,8 @@ export const deleteChat = async (chatId) => {
       },
     });
     return true;
-  } catch {
+  } catch (err){
+    console.log(err)
     return null;
   }
 };

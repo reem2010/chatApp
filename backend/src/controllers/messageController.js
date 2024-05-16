@@ -11,8 +11,8 @@ export const createMessage = async (req, res) => {
   const senderId = req.userId;
   const { chatId, content } = req.body;
   const message = await messageModel.createMessage(senderId, +chatId, content);
-  if (!message){
-    return res.status(404).json({message: "chat doesnt exist"})
+  if (!message) {
+    return res.status(404).json({ message: "chat doesnt exist" });
   }
   res
     .status(200)
