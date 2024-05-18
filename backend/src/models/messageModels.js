@@ -10,6 +10,13 @@ export const getMessages = async (chatId) => {
         createdAt: "asc",
       },
     ],
+    include: {
+      user: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
   return messages;
 };
@@ -24,7 +31,7 @@ export const createMessage = async (userId, chatId, content) => {
       },
     });
     return message;
-  } catch(err) {
+  } catch (err) {
     return null;
   }
 };

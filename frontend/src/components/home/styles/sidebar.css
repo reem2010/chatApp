@@ -1,0 +1,94 @@
+.sidebar {
+  padding: 25px;
+  min-width: 250px;
+  border-right: 1px solid blue;
+}
+
+.chat-title {
+  padding-bottom: 15px;
+
+}
+
+.chats-menu {
+  padding-left: 5px;
+  padding-right: 30px;
+  height: 400px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #7903b4 #000000;
+  list-style-type: none;
+}
+
+.chats-menu .chat-name {
+  padding: 10px 0;
+  cursor: pointer;
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.del-but {
+  background-color: black;
+  color: red;
+  border: 1px solid red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: 15px;
+  cursor: pointer;
+  text-align: center;
+  padding: 0;
+}
+
+.del-conf {
+  position: fixed;
+  width: 400px;
+  min-height: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.99);
+  border: 1px solid rgb(239 239 255 / 99%);
+  border-radius: 15px;
+  padding: 20px;
+  opacity: 1;
+  z-index: 3;
+  display: none;
+  text-align: center;
+}
+
+.blur {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.99);
+  padding: 20px;
+  opacity: 0.7;
+  z-index: 2;
+  display: none;
+}
+
+.del-conf span {
+  margin-bottom: 30px;
+  display: block;
+}
+
+.del-conf button {
+  cursor: pointer;
+}
+
+.del-cancel {
+  margin-left: 35px;
+}
+
+.visible {
+  display: block !important;
+}
+
+/* .selected {
+  opacity: 0.7;
+} */

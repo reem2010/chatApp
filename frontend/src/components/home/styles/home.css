@@ -1,0 +1,23 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.Home {
+  background-color: black;
+  display: grid;
+  height: 100vh !important;
+  overflow: auto;
+  /* width: 100vw; */
+  grid-template-rows: 90px auto;
+  overflow-x: hidden;
+}
+
+.home-content {
+  color: white;
+  display: grid;
+  max-height: 500px;
+  grid-template-columns: minmax(250px, auto) 1fr;
+}
