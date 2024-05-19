@@ -21,6 +21,8 @@ router.post("/login", async (req, res) => {
     });
     const cookieOptions = {
       httpOnly: true,
+      secure: true,
+      sameSite: 'none',
       partitioned: true,
     };
     res.cookie("token", token, cookieOptions);
