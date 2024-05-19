@@ -1,6 +1,6 @@
 import "../../style/signup.css";
 import { useNavigate } from "react-router-dom";
-async function clicked(e) {
+async function clicked(e, nav) {
   e.preventDefault();
   const email = e.target.children.email.value;
   const pass = e.target.children.pass.value;
