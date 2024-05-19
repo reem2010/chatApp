@@ -1,4 +1,5 @@
 import "../../style/signup.css";
+import { useNavigate } from "react-router-dom";
 async function clicked(e) {
   e.preventDefault();
   const email = e.target.children.email.value;
@@ -42,18 +43,19 @@ async function clicked(e) {
     });
     let data = post;
     if (data.status == 201) {
-      window.location.replace("http://localhost:5173/");
+      nav("/");
     }
   }
   post_data();
 }
 const SignUp = () => {
+  const nav = useNavigate();
   return (
     <div className="form-container">
       <div className="app-name">
         <p>Chat app</p>
       </div>
-      <form onSubmit={clicked}>
+      <form onSubmit={(e) => clicked(e, nav)}>
         <label htmlFor="user">Username</label>
         <input type="text" id="user" required />
         <label htmlFor="email">Email</label>
