@@ -42,7 +42,7 @@ async function clicked(e) {
     });
     let data = post;
     if (data.status == 201) {
-      window.location.replace("http://localhost:5173/login");
+      window.location.replace("http://localhost:5173/");
     }
   }
   post_data();
