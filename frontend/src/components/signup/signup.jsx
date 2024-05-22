@@ -44,9 +44,10 @@ async function clicked(e, nav) {
     let data = post;
     if (data.status === 400) {
       const p = document.createElement("p")
-      p.innerHTML = data.message
+      p.innerHTML = 'data.message'
       const form_ele = document.querySelector(".form-container")
       form_ele.append(p)
+      return
     }
     else if (data.status == 201) {
       nav("/");
