@@ -42,11 +42,21 @@ async function clicked(e, nav) {
       }),
     });
     let data = post;
-    if (data.status == 201) {
+    if (data.status === 400) {
+      const p = document.createElement("p")
+      p.innerHTML = data.message
+      const form_ele = document.querySelector(".form-container")
+      form_ele.append(p)
+    }
+    else if (data.status == 201) {
       nav("/");
     }
   }
   post_data();
+}
+async function for_login_path(nav) {
+  console.log('done')
+  nav('/')
 }
 const SignUp = () => {
   const nav = useNavigate();
@@ -66,6 +76,7 @@ const SignUp = () => {
         <input type="password" min="8" max="50" id="checkpass" required />
         <input type="submit" value="signup" />
       </form>
+      <a onClick={()=>for_login_path(nav)}>Login page</a>
     </div>
   );
 };
