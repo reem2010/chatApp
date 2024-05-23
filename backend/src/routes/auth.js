@@ -48,6 +48,6 @@ router.post("/register", async (req, res) => {
 
 router.post("/logout", async (req, res) => {
   res.clearCookie("token")
-  res.status(200);
+  res.status(200).json({message: "logged out"});
 });
 export default router;
