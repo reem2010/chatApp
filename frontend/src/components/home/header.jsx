@@ -2,13 +2,13 @@ import "./styles/header.css";
 import { getUser } from "./data/user";
 import { useNavigate } from "react-router-dom";
 async function logoutAction(nav) {
-  await fetch(`${import.meta.env.VITE_Host}auth/logout`, {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // await fetch(`${import.meta.env.VITE_Host}auth/logout`, {
+  //     credentials: "include",
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
   nav('/')
 }

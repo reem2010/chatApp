@@ -47,12 +47,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/logout", async (req, res) => {
-  const cookieOptions = {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-      partitioned: true,
-    };
-  return res.clearCookie("token").status(202).json({ message: "logout successfully" }, cookieOptions);
+  res.clearCookie("token")
+  res.status(200);
 });
 export default router;
