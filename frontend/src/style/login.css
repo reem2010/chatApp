@@ -50,6 +50,7 @@ form input {
 
 form input[type=submit] {
     font-size: 20px;
+    cursor: pointer;
 }
 
 form input[type=checkbox] {
