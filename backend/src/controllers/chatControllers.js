@@ -36,6 +36,7 @@ export const createChat = async (req, res) => {
 export const deleteChat = async (req, res) => {
   const chatId = req.params.chatId;
   if (await ChatModel.deleteChat(+chatId)) {
+    req.io.emit('chat deleted', { id: chatId });
     return res.status(200).json({ message: "chat deleted successfully" });
   }
   res.status(404).json({ message: "chat doesn't exist" });
