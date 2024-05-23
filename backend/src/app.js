@@ -10,7 +10,7 @@ import router2 from './routes/protectedRoute.js'
 
 const app = express()
 const corsOptions = {
-  origin: process.env.HOST, 
+  origin: true, 
   credentials: true
 };
 
