@@ -39,8 +39,11 @@ const ChatBody = ({ chatData }) => {
       socket.on('new message', (message) => {
         setMessages((prevMessages) => [...prevMessages, message]);
       });
+      return () => {
+        socket.off('new message');
+      };
     }
-  },[update, chatData])
+  },[update, chatData]);
   return (
     <div className="chatBody">
       <div className="chat-name">
