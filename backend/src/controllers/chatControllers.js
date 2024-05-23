@@ -30,6 +30,7 @@ export const createChat = async (req, res) => {
     return res.json({ message: "chat already exist" });
   }
   const chat = await ChatModel.createChat(senderId, user.id);
+  req.io.emit('chat created', { id: chat.id, name: user.name });
   res.status(200).json({ message: "chat created successfully" });
 };
 export const deleteChat = async (req, res) => {
