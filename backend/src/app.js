@@ -48,3 +48,8 @@ const corsOptions = {
          }
      });
  });
+ app.use((req, res, next) => {
+    req.io = io;
+    next();
+  });
+  export { io };
