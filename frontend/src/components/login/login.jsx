@@ -31,10 +31,17 @@ async function clicked(e, nav) {
     });
     let data = post;
     if (data.status == 200) {
+      const userId = data.userId;
+      localStorage.setItem('userId', userId);
+
       socket = io(import.meta.env.VITE_Host, {
-        withCredentials: true, 
+          withCredentials: true,
+          query: { userId: userId }, 
       });
       nav("/home");
+    }
+    else {
+      console.error(data.message);
     }
   }
   post_data();
