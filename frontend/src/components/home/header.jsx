@@ -6,10 +6,10 @@ async function logoutAction(nav) {
       credentials: "include",
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
+
   nav('/')
 }
 const HomeHead = () => {
