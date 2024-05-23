@@ -53,6 +53,6 @@ router.post("/logout", async (req, res) => {
       sameSite: 'none',
       partitioned: true,
     };
-  return res.clearCookie("token").status(202).json({ message: "logout successfully" }, cookieOptions);;
+  return res.clearCookie("token").status(202).json({ message: "logout successfully" }, cookieOptions);
 });
 export default router;
