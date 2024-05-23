@@ -36,7 +36,9 @@ const ChatBody = ({ chatData }) => {
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
       });
-      
+      socket.on('new message', (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      });
     }
   },[update, chatData])
   return (
