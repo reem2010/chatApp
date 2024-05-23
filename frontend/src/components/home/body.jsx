@@ -4,8 +4,12 @@ import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import "./styles/body.css";
+import io from 'socket.io-client';
+
+const socket = io(import.meta.env.VITE_Host);
 
 const ChatBody = ({ chatData }) => {
+  
   const [msg, setMsg] = useState("");
   const [visible, setvisible] = useState(false);
   const [messages, setmessages] = useState(null);
@@ -24,11 +28,15 @@ const ChatBody = ({ chatData }) => {
     }
     setMsg("");
   };
+
   useEffect(() => {
     if(chatData){
+      socket.emit('join chat', chatData.chatId);
+
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
       });
+      
     }
   },[update, chatData])
   return (
