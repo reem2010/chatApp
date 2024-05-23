@@ -1,7 +1,15 @@
 import "./styles/header.css";
 import { getUser } from "./data/user";
 import { useNavigate } from "react-router-dom";
-function logoutAction(nav) {
+async function logoutAction(nav) {
+  await fetch(`${import.meta.env.VITE_Host}auth/logout`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
   nav('/')
 }
 const HomeHead = () => {
