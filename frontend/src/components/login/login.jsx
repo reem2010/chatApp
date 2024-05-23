@@ -31,6 +31,9 @@ async function clicked(e, nav) {
     });
     let data = post;
     if (data.status == 200) {
+      socket = io(import.meta.env.VITE_Host, {
+        withCredentials: true, 
+      });
       nav("/home");
     }
   }
