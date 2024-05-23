@@ -7,15 +7,17 @@ import chatRouter from './routes/chatsRoute.js'
 import messageRouter from './routes/messageRoute.js'
 import router2 from './routes/protectedRoute.js'
 
+
 const app = express()
-app.use(cookieParser());
-app.use(express.json());
 const corsOptions = {
   origin: process.env.HOST, 
   credentials: true
 };
 
- app.use(cors(corsOptions));
+app.use(cors(corsOptions));
+app.use(cookieParser());
+app.use(express.json());
+
  app.use('/auth', userRouter);
  app.use('/chats', chatRouter)
  app.use('/message', messageRouter)
