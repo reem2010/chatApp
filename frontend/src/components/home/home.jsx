@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     socket.current = io(import.meta.env.VITE_Host);
     socket.current.emit('add-user', localStorage.getItem('userId'))
-  })
+  }, [])
   return (
     <div className="Home">
       <HomeHead />

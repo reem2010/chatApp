@@ -6,6 +6,7 @@ import userRouter from './routes/auth.js'
 import chatRouter from './routes/chatsRoute.js'
 import messageRouter from './routes/messageRoute.js'
 import router2 from './routes/protectedRoute.js'
+import { Console } from 'console';
 
 
 const app = express()
@@ -36,14 +37,15 @@ app.use(express.json());
      global.chatsocket = socket;
      socket.on("add-user", (userId)=> {
          onlineUsers.set(userId, socket.id);
-         console.log(`User added: ${userId} with socket ID: ${socket.id}`);
+        //  console.log(`User added: ${userId} with socket ID: ${socket.id}`);
      });
      socket.on("send-msg", (data) => {
-        console.log(onlineUsers)
-        console.log(data)
+        // console.log(onlineUsers)
+        // console.log(data)
          const sendUserSocket = onlineUsers.get(data.to.toString());
-         console.log('msgsent', sendUserSocket)
+        //  console.log('msgsent', sendUserSocket)
          if (sendUserSocket) {
+            //  console.log('sent')   
              socket.to(sendUserSocket).emit("msg-recieve", data.msg);
          }
      });

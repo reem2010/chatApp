@@ -29,9 +29,8 @@ const ChatBody = ({ chatData, socket }) => {
   };
 
   useEffect(() => {
+    // console.log('again')
     if(chatData){
-      // socket.emit('join chat', chatData.chatId);
-
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
       })
@@ -41,7 +40,8 @@ const ChatBody = ({ chatData, socket }) => {
   useEffect(() => {
     if(socket.current){
       socket.current.on('msg-recieve', (msg) => {
-        setMsgrec(!msgrec)
+        // console.log(msg)
+        setupdate(!update)
       })
     }
   })
