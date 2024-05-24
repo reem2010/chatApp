@@ -31,13 +31,9 @@ async function clicked(e, nav) {
     });
     let data = post;
     if (data.status == 200) {
-      const userId = data.userId;
+      const user = await data.json()
+      const userId = user.userId;
       localStorage.setItem('userId', userId);
-
-      socket = io(import.meta.env.VITE_Host, {
-          withCredentials: true,
-          query: { userId: userId }, 
-      });
       nav("/home");
     }
     else {

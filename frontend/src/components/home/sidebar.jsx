@@ -47,9 +47,11 @@ export const Sidebar = ({ updateSelectedChat }) => {
               key={chat.id}
               className={`chat-name ${selected[chat.id] ? "selected" : ""}`}
               onClick={() => {
+                console.log(chat)
                 updateSelectedChat({
                   chatName: chat.name,
                   chatId: chat.id,
+                  to: chat.to
                 });
                 setselected({ [chat.id]: true });
               }}

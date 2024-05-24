@@ -1,38 +1,34 @@
-import express, { json } from 'express'
+import express from 'express'
 import cors from 'cors'
+import cookieParser from "cookie-parser";
+import {Server} from 'socket.io'
 import userRouter from './routes/auth.js'
 import chatRouter from './routes/chatsRoute.js'
 import messageRouter from './routes/messageRoute.js'
 import router2 from './routes/protectedRoute.js'
-import cookieParser from "cookie-parser";
-import socket from 'socket.io';
+
 
 const app = express()
-app.use(cookieParser());
-app.use(express.json());
 const corsOptions = {
-  origin: process.env.HOST, // Your frontend origin
-  credentials: true , // Set to true if sending credentials
-  // allowedHeaders: ['Content-Type', 'Authorization'], // Adjust allowed headers as needed
-  methods: 'GET, POST, PUT, DELETE, OPTIONS', // Adjust allowed methods as needed
+  origin: true, 
+  credentials: true
 };
 
- app.use(cors(corsOptions));
+app.use(cors(corsOptions));
+app.use(cookieParser());
+app.use(express.json());
+
  app.use('/auth', userRouter);
  app.use('/chats', chatRouter)
  app.use('/message', messageRouter)
  app.use('/protected', router2);
  const PORT = process.env.PORT || 3000;
- app.listen(PORT, () => {
+ const server = app.listen(PORT, () => {
  console.log(`Server is running on port ${PORT}`);
  });
 
- const io = socket(server, {
-     cors: {
-         origin: "http://localhost:3000",
-         credentials: true,
-     },
-
+ const io = new Server(server, {
+     cors: corsOptions
  });
  global.onlineUsers = new Map();
 
@@ -40,9 +36,13 @@ const corsOptions = {
      global.chatsocket = socket;
      socket.on("add-user", (userId)=> {
          onlineUsers.set(userId, socket.id);
+         console.log(`User added: ${userId} with socket ID: ${socket.id}`);
      });
      socket.on("send-msg", (data) => {
-         const sendUserSocket = onlineUsers.get(data.to);
+        console.log(onlineUsers)
+        console.log(data)
+         const sendUserSocket = onlineUsers.get(data.to.toString());
+         console.log('msgsent', sendUserSocket)
          if (sendUserSocket) {
              socket.to(sendUserSocket).emit("msg-recieve", data.msg);
          }

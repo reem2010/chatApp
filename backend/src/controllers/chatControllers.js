@@ -10,12 +10,15 @@ export const allChat = async (req, res) => {
         return mem.user.id != userId;
       });
       chat.name = rec[0].user.name;
+      chat.to = rec[0].user.id
     }
     return {
       id: chat.id,
       name: chat.name,
+      to: chat.to
     };
   });
+  console.log(chats)
   res.status(200).json(chats);
 };
 

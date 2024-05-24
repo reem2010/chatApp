@@ -4,13 +4,11 @@ import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import "./styles/body.css";
-import io from 'socket.io-client';
 
-const socket = io(import.meta.env.VITE_Host);
-
-const ChatBody = ({ chatData }) => {
+const ChatBody = ({ chatData, socket }) => {
   
   const [msg, setMsg] = useState("");
+  const [msgrec, setMsgrec] = useState(false);
   const [visible, setvisible] = useState(false);
   const [messages, setmessages] = useState(null);
   const [update, setupdate] = useState(false);
@@ -24,6 +22,7 @@ const ChatBody = ({ chatData }) => {
         chatId: chatData.chatId,
         content: msg,
       })
+      socket.current.emit('send-msg', {to: chatData.to, msg: msg})
       setupdate(!update)
     }
     setMsg("");
@@ -31,19 +30,21 @@ const ChatBody = ({ chatData }) => {
 
   useEffect(() => {
     if(chatData){
-      socket.emit('join chat', chatData.chatId);
+      // socket.emit('join chat', chatData.chatId);
 
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
-      });
-      socket.on('new message', (message) => {
-        setMessages((prevMessages) => [...prevMessages, message]);
-      });
-      return () => {
-        socket.off('new message');
-      };
+      })
     }
-  },[update, chatData]);
+  },[update, chatData, msgrec]);
+
+  useEffect(() => {
+    if(socket.current){
+      socket.current.on('msg-recieve', (msg) => {
+        setMsgrec(!msgrec)
+      })
+    }
+  })
   return (
     <div className="chatBody">
       <div className="chat-name">

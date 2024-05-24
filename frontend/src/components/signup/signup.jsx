@@ -1,5 +1,6 @@
 import "../../style/signup.css";
-async function clicked(e) {
+import { useNavigate } from "react-router-dom";
+async function clicked(e, nav) {
   e.preventDefault();
   const email = e.target.children.email.value;
   const pass = e.target.children.pass.value;
@@ -41,19 +42,31 @@ async function clicked(e) {
       }),
     });
     let data = post;
-    if (data.status == 201) {
-      window.location.replace("http://localhost:5173/login");
+    if (data.status === 400) {
+      const p = document.createElement("p")
+      p.innerHTML = 'data.message'
+      const form_ele = document.querySelector(".form-container")
+      form_ele.append(p)
+      return
+    }
+    else if (data.status == 201) {
+      nav("/");
     }
   }
   post_data();
 }
+async function for_login_path(nav) {
+  console.log('done')
+  nav('/')
+}
 const SignUp = () => {
+  const nav = useNavigate();
   return (
     <div className="form-container">
       <div className="app-name">
         <p>Chat app</p>
       </div>
-      <form onSubmit={clicked}>
+      <form onSubmit={(e) => clicked(e, nav)}>
         <label htmlFor="user">Username</label>
         <input type="text" id="user" required />
         <label htmlFor="email">Email</label>
@@ -64,6 +77,7 @@ const SignUp = () => {
         <input type="password" min="8" max="50" id="checkpass" required />
         <input type="submit" value="signup" />
       </form>
+      <a onClick={()=>for_login_path(nav)}>Login page</a>
     </div>
   );
 };

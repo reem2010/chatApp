@@ -19,8 +19,14 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ userId: email_is_exist.id }, process.env.SecretKey, {
       expiresIn: "1h",
     });
-    res.cookie("token", token);
-    res.status(200).json({ message: "user logged in" });
+    const cookieOptions = {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      partitioned: true,
+    };
+    res.cookie("token", token, cookieOptions);
+    res.status(200).json({ message: "user logged in", userId:  email_is_exist.id});
   } catch (error) {
     res.status(500).json({ error: `Login ${error}` });
   }
@@ -29,6 +35,10 @@ router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const hashed_pass = await hash(password, 10);
+    const user = get_user(email)
+    if (user) {
+      res.status(200).json({message: "email is already exist"})
+    }
     await createUser({ name: username, email: email, password: hashed_pass });
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
@@ -37,7 +47,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/logout", async (req, res) => {
-  res.clearCookie("token");
-  res.status(200).json({ message: "logout successfully" });
+  res.clearCookie("token")
+  res.status(200).json({message: "logged out"});
 });
 export default router;

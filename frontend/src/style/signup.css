@@ -28,6 +28,10 @@
     gap: 10px;
 }
 
+a {
+    cursor: pointer;
+}
+
 .form-container a {
     color: rgb(85, 85, 229);
     text-decoration: none;
