@@ -5,8 +5,10 @@ import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import "./styles/body.css";
 
-const ChatBody = ({ chatData }) => {
+const ChatBody = ({ chatData, socket }) => {
+  
   const [msg, setMsg] = useState("");
+  const [msgrec, setMsgrec] = useState(false);
   const [visible, setvisible] = useState(false);
   const [messages, setmessages] = useState(null);
   const [update, setupdate] = useState(false);
@@ -20,17 +22,29 @@ const ChatBody = ({ chatData }) => {
         chatId: chatData.chatId,
         content: msg,
       })
+      socket.current.emit('send-msg', {to: chatData.to, msg: msg})
       setupdate(!update)
     }
     setMsg("");
   };
+
   useEffect(() => {
+    // console.log('again')
     if(chatData){
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
-      });
+      })
     }
-  },[update, chatData])
+  },[update, chatData, msgrec]);
+
+  useEffect(() => {
+    if(socket.current){
+      socket.current.on('msg-recieve', (msg) => {
+        // console.log(msg)
+        setupdate(!update)
+      })
+    }
+  })
   return (
     <div className="chatBody">
       <div className="chat-name">

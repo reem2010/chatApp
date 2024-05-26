@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
       partitioned: true,
     };
     res.cookie("token", token, cookieOptions);
-    res.status(200).json({ message: "user logged in" });
+    res.status(200).json({ message: "user logged in", userId:  email_is_exist.id});
   } catch (error) {
     res.status(500).json({ error: `Login ${error}` });
   }

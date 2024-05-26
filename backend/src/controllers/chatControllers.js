@@ -10,12 +10,15 @@ export const allChat = async (req, res) => {
         return mem.user.id != userId;
       });
       chat.name = rec[0].user.name;
+      chat.to = rec[0].user.id
     }
     return {
       id: chat.id,
       name: chat.name,
+      to: chat.to
     };
   });
+  console.log(chats)
   res.status(200).json(chats);
 };
 
@@ -30,11 +33,13 @@ export const createChat = async (req, res) => {
     return res.json({ message: "chat already exist" });
   }
   const chat = await ChatModel.createChat(senderId, user.id);
+  req.io.emit('chat created', { id: chat.id, name: user.name });
   res.status(200).json({ message: "chat created successfully" });
 };
 export const deleteChat = async (req, res) => {
   const chatId = req.params.chatId;
   if (await ChatModel.deleteChat(+chatId)) {
+    req.io.emit('chat deleted', { id: chatId });
     return res.status(200).json({ message: "chat deleted successfully" });
   }
   res.status(404).json({ message: "chat doesn't exist" });
