@@ -1,11 +1,17 @@
 .sidebar {
-  padding: 25px;
-  min-width: 250px;
-  border-right: 1px solid blue;
+    padding: 25px;
+    min-width: 250px;
+    border-right: 1px solid #443d3d;
 }
 
 .chat-title {
-  padding-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  border: 2px solid #443d3d;
+  margin-bottom: 5px;
 
 }
 
@@ -27,6 +33,12 @@
   align-items: center;
   justify-content: space-between;
 }
+.chat-name {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
 
 .del-but {
   background-color: black;
@@ -40,6 +52,9 @@
   text-align: center;
   padding: 0;
   font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .del-conf {
@@ -90,6 +105,10 @@
   border-radius: 5px;
   color: white;
 }
+.del-conf span {
+  font-size: 25px;
+  font-weight: 600;
+}
 
 .del-cancel {
   margin-left: 35px;
@@ -110,6 +129,7 @@
     padding: 10px;
     outline: none;
     border: none;
+    border-radius: 5px;
 }
 .add-mem {
     padding: 10px;
