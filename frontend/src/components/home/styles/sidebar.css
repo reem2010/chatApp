@@ -31,7 +31,7 @@
 .del-but {
   background-color: black;
   color: red;
-  border: 1px solid red;
+  border: 3px solid red;
   border-radius: 50%;
   width: 15px;
   height: 15px;
@@ -39,6 +39,7 @@
   cursor: pointer;
   text-align: center;
   padding: 0;
+  font-weight: 900;
 }
 
 .del-conf {
@@ -75,20 +76,54 @@
 .del-conf span {
   margin-bottom: 30px;
   display: block;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .del-conf button {
   cursor: pointer;
+  background: #443d3d;
+  padding: 5px;
+  outline: none;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
 
 .del-cancel {
   margin-left: 35px;
+  background: #443d3d;
+  padding: 5px;
+  outline: none;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
 
 .visible {
   display: block !important;
 }
-
+.add-field {
+    background: #514a4a;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+.add-mem {
+    padding: 10px;
+    background: #443d3d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+}
+.me-msg {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
 /* .selected {
   opacity: 0.7;
 } */

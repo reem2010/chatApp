@@ -49,7 +49,8 @@
     padding: 10px;
     overflow: auto;
     scrollbar-width: thin;
-    scrollbar-color: blue #000000;
+    scrollbar-color: #514a4a #000000;
+    height: 400px;
 }
 
 .message{

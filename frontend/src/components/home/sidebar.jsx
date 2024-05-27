@@ -32,6 +32,7 @@ export const Sidebar = ({ updateSelectedChat }) => {
           type="text"
           placeholder="Email you want to chat with.."
           value={recEmail}
+          className="add-field"
           onChange={(ev) => {
             setrecEmail(ev.target.value);
           }}
