@@ -14,8 +14,11 @@
 .msgInput {
     min-width: 50vw;
     min-height: 30px;
-    border-radius: 15px;
-    padding: 0 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background: #443d3d;
+    outline: none;
+    border: none;
 }
 
 .smile {
