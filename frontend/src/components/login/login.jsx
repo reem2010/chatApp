@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../../style/login.css";
 import { useNavigate } from "react-router-dom";
 import io from 'socket.io-client';
-
+import Toastify from "https://cdn.jsdelivr.net/npm/toastify-js";
 let socket;
 
 async function checked(e) {
@@ -37,7 +37,15 @@ async function clicked(e, nav) {
       nav("/home");
     }
     else {
-      console.error(data.message);
+            Toastify({
+                text: 'email or password is wrong...',
+                duration: 3000, // Duration in milliseconds
+                close: true, // Show a close button
+                gravity: "bottom", // Vertical position
+                position: "right", // Horizontal position
+                backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)", // Background color
+                stopOnFocus: true // Stop the timer when the toast is focused
+            }).showToast();
     }
   }
   post_data();
