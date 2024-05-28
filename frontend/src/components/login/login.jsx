@@ -39,8 +39,15 @@ async function clicked(e, nav) {
     }
     else {
       toast.error('email or password is wrong', {
-            position: "bottom-right"
-          })
+position: "bottom-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+});
     }
   }
   post_data();
@@ -65,8 +72,8 @@ const Login = () => {
           <Link to="/signup">create accout</Link>
           <input type="submit" value="login" />
         </form>
-        <ToastContainer/>
       </div>
+      <ToastContainer/>
     </>
   );
 };
