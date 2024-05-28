@@ -55,7 +55,7 @@ const ChatBody = ({ chatData, socket }) => {
           console.log(mes.user.id)
           console.log(mes.user.name)
           console.log(mes.user)
-          console.log(mes.id)
+          console.log(mes)
           return(<div className="message" key={mes.id}>
             <h4>{mes.user.name}</h4>
             <p>{mes.content}</p>
