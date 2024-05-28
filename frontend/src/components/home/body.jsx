@@ -52,11 +52,9 @@ const ChatBody = ({ chatData, socket }) => {
       </div>
       <div className="chatBox">
         {messages && messages.map(mes => {
-          console.log(mes.user.id)
-          console.log(mes.user.name)
-          console.log(mes.user)
-          console.log(mes)
-          return(<div className="message" key={mes.id}>
+          const plusClass = mes.userId === 1 ? 'me-msg' : ""
+          const classes = "message"+ " " + plusClass
+          return (<div className={ classes } key={mes.id}>
             <h4>{mes.user.name}</h4>
             <p>{mes.content}</p>
           </div>)
