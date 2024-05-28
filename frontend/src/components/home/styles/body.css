@@ -61,9 +61,15 @@
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: #514a4a #000000;
-    height: 400px;
 }
 
 .message{
-    padding: 5px;
+    padding: 25px;
+    background: black;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 25px;
+    /* width: 200px; */
+    width: fit-content;
+
 }
