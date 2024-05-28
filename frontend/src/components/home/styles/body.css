@@ -61,6 +61,7 @@
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: #514a4a #000000;
+    height: 400px;
 }
 
 .message{
