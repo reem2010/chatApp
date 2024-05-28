@@ -140,9 +140,15 @@
     margin: 10px;
 }
 .me-msg {
-  display: flex;
-  align-items: end;
-  flex-direction: column;
+      display: flex;
+    /* align-items: end; */
+    flex-direction: column;
+    /* width: 500px; */
+    /* float: right; */
+    /* width: 200px; */
+    direction: rtl;
+    translate: calc(1170px - 100%);
+    width: fit-content;
 }
 /* .selected {
   opacity: 0.7;
