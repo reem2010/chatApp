@@ -44,6 +44,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .emoji-picker {
@@ -62,12 +63,19 @@
     scrollbar-width: thin;
     scrollbar-color: #514a4a #000000;
     height: 400px;
+    display: flex;
+    flex-direction: column;
 }
-
+.me-msg {
+    align-self: flex-end
+}
+.sender-name{
+    margin-bottom: 5px;
+}
 .message{
     padding: 25px;
     background: black;
-    margin: 5px;
+    margin: 7px;
     padding: 10px;
     border-radius: 25px;
     /* width: 200px; */
