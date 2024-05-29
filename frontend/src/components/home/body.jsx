@@ -29,6 +29,11 @@ const ChatBody = ({ chatData, socket }) => {
   };
 
   useEffect(() => {
+    const ele = document.querySelector('.chatBox'); // Replace with your element's ID
+  ele.scroll({
+  top: ele.scrollHeight,
+  behavior: 'smooth'
+  });
     // console.log('again')
     if(chatData){
       getMessages(chatData.chatId).then((msgs) => {
