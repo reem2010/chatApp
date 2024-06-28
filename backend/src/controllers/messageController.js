@@ -1,5 +1,4 @@
 import * as messageModel from "../models/messageModels.js";
-import { get_user } from "../models/userModels.js";
 
 export const getMessages = async (req, res) => {
   const chatId = req.query.chatId;
