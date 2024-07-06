@@ -29,22 +29,16 @@ const ChatBody = ({ chatData, socket }) => {
   };
 
   useEffect(() => {
-    // console.log('again')
     if(chatData){
       getMessages(chatData.chatId).then((msgs) => {
         setmessages(msgs)
       })
     }
-    // const ele = document.querySelector('.chatBox'); // Replace with your element's ID
-    // ele.scroll({
-    // top: ele.scrollHeight + 20,
-    // behavior: 'smooth'
-    // });
     
   },[update, chatData, msgrec]);
 
   useEffect(() => {
-    const ele = document.querySelector('.chatBox'); // Replace with your element's ID
+    const ele = document.querySelector('.chatBox');
     messages &&  ele.scroll({
       top: ele.scrollHeight + 20,
       behavior: 'smooth'
@@ -53,7 +47,6 @@ const ChatBody = ({ chatData, socket }) => {
   useEffect(() => {
     if(socket.current){
       socket.current.on('msg-recieve', (msg) => {
-        // console.log(msg)
         setupdate(!update)
       })
     }
@@ -68,7 +61,7 @@ const ChatBody = ({ chatData, socket }) => {
           const plusClass = mes.userId === +localStorage.getItem('userId') ? 'me-msg' : ""
           const classes = "message"+ " " + plusClass
           return (<div className={ classes } key={mes.id}>
-            <h4 className="sender-name">{mes.user.name}</h4>
+            <h4 className="sender-name">{mes.userId === +localStorage.getItem('userId')? "you" : mes.user.name}</h4>
             <p>{mes.content}</p>
           </div>)
         })}

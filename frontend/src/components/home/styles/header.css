@@ -1,24 +1,18 @@
 #HEADER {
-    border-bottom: 1px solid #443d3d;
+    border-bottom: 1px solid #5f9ea0;
 }
 .pointer {
     cursor: pointer;
-    background-color: #443d3d;
-    padding: 11px;
-    color: white;
-    font-size: 25px;
-    outline: none;
-    border: none;
-    font-weight: 500;
-    /* border: 2px solid white; */
-    /* -webkit-line-break: after-white-space; */
-    border-radius: 5px;
-    outline: none;
-    text-transform: uppercase;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    margin-right: 10px;
+    background-image: url("/logout.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .pointer:hover {
-    background: transparent;
-    border: 3px solid #443d3d;
+   opacity: 70%;
 }
 .nav-bar {
     display: flex;
@@ -33,5 +27,12 @@
     padding: 0 10px;
     background: black;
     color: white;
-    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.container h2{
+    margin-left: 200px;
 }

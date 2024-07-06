@@ -26,7 +26,7 @@ export const Sidebar = ({ updateSelectedChat }) => {
   };
   return (
     <div className="sidebar">
-      <h3 className="chat-title">chats</h3>
+      <h3 className="chat-title">Chats</h3>
       <div className="new-chat">
         <input
           type="text"

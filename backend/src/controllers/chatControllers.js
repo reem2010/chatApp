@@ -4,12 +4,17 @@ import {io} from "../app.js"
 
 export const allChat = async (req, res) => {
   const userId = req.userId;
+  // console.log(userId)
   let chats = await ChatModel.getChats(userId);
+  console.log(chats)
   chats = chats.map((chat) => {
     if (chat.name === "") {
       const rec = chat.members.filter((mem) => {
+        // console.log(userId)
+        // console.log(mem.user.id )
         return mem.user.id != userId;
       });
+      // console.log(rec)
       chat.name = rec[0].user.name;
       chat.to = rec[0].user.id
     }
@@ -19,7 +24,7 @@ export const allChat = async (req, res) => {
       to: chat.to
     };
   });
-  console.log(chats)
+  // console.log(chats)
   res.status(200).json(chats);
 };
 
@@ -45,3 +50,4 @@ export const deleteChat = async (req, res) => {
   }
   res.status(404).json({ message: "chat doesn't exist" });
 };
+

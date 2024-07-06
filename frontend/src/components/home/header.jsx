@@ -10,10 +10,8 @@ const HomeHead = () => {
   return (
     <header id="HEADER">
       <div className="container">
-  <ul className="nav-bar">
-    <li>Chat app</li>
-    <button className="pointer" onClick={()=> logoutAction(nav)}>logout</button>
-  </ul>
+        <h2>ChatApp</h2>
+        <button className="pointer" onClick={()=> logoutAction(nav)}></button>
       </div>
     </header>
   );

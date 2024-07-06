@@ -30,6 +30,7 @@ async function clicked(e, nav) {
       return;
     }
     let post = await fetch(`${import.meta.env.VITE_Host}auth/register`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -50,7 +51,7 @@ async function clicked(e, nav) {
       return
     }
     else if (data.status == 201) {
-      nav("/");
+      nav("/home");
     }
   }
   post_data();

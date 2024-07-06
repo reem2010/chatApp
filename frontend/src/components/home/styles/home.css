@@ -9,15 +9,13 @@
   background-color: black;
   display: grid;
   height: 100vh !important;
-  overflow: auto;
-  /* width: 100vw; */
-  grid-template-rows: 90px auto;
-  overflow-x: hidden;
+  grid-template-rows: 70px 1fr;
+  overflow: hidden;
 }
 
 .home-content {
   color: white;
   display: grid;
-  max-height: 500px;
+  /* max-height: 500px; */
   grid-template-columns: minmax(250px, auto) 1fr;
 }

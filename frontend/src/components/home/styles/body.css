@@ -1,7 +1,8 @@
 .chatBody {
+    /* max-height: 500px; */
     display: grid;
-    grid-template-rows: 50px auto 60px;
-    padding: 15px;
+    grid-template-rows: 40px 1fr  50px;
+    padding: 10px;
 }
 
 .chatInput {
@@ -15,7 +16,7 @@
     min-width: 50vw;
     min-height: 30px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 8px;
     background: #443d3d;
     outline: none;
     border: none;
