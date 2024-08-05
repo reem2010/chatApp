@@ -1,13 +1,10 @@
 .sidebar {
-    margin:  25px;
-    margin-top: 0;
-    padding-top: 25px;
-    padding-right: 15px;
-    min-width: 250px;
-    border-right: 1px solid #5f9ea0;
-    max-height:500px !important;
-    /* height: 100%; */
-
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 350px;
 }
 
 .chat-title {
@@ -18,17 +15,21 @@
   font-size: x-large;
   margin-bottom: 5px;
   margin-right: 15px;
-
 }
 
 .chats-menu {
-  padding-left: 15px;
-  padding-right: 30px;
-  height: 400px;
+  padding: 0 15px;
+  margin-top: 20px;
+  width: 90%;
+  height: 350px;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: #7903b4 #000000;
+  scrollbar-color: #5f9ea0 #000000;
   list-style-type: none;
+}
+.chats-menu::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
 .chats-menu .chat-name {
@@ -39,6 +40,7 @@
   justify-content: space-between;
 }
 .chat-name {
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +72,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.99);
-  border: 1px solid rgb(239 239 255 / 99%);
+  border: 1px solid #5f9ea0;
   border-radius: 15px;
   padding: 20px;
   opacity: 1;
@@ -110,9 +112,9 @@
   border-radius: 5px;
   color: white;
 }
-.del-conf span {
-  font-size: 25px;
-  font-weight: 600;
+
+.del-conf button:hover {
+  opacity: 80%;
 }
 
 .del-cancel {
@@ -130,18 +132,39 @@
   display: block !important;
 }
 .add-field {
-    background: #514a4a;
-    padding: 10px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
+  width: 80%;
+  background: #514a4a;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
 }
 .add-mem {
-    padding: 10px;
-    background: #443d3d;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    margin: 10px;
-    cursor: pointer;
+  padding: 10px;
+  background: #443d3d;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.new-chat {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #000000;
+    margin: 0;
+  }
+  .closed {
+    display: none;
+  }
+  .chats-menu {
+    min-height: 70vh;
+  }
 }

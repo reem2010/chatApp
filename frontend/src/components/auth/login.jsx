@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import "../../style/login.css";
+import "./styles/auth.css";
 import { useNavigate } from "react-router-dom";
-import io from 'socket.io-client';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 let socket;
 
 async function checked(e) {
@@ -32,22 +31,21 @@ async function clicked(e, nav) {
     });
     let data = post;
     if (data.status == 200) {
-      const user = await data.json()
+      const user = await data.json();
       const userId = user.userId;
-      localStorage.setItem('userId', userId);
+      localStorage.setItem("userId", userId);
       nav("/home");
-    }
-    else {
-      toast.error('email or password is wrong', {
-position: "bottom-right",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "colored",
-});
+    } else {
+      toast.error("email or password is wrong", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   }
   post_data();
@@ -55,10 +53,16 @@ theme: "colored",
 const Login = () => {
   const nav = useNavigate();
   return (
-    <>
+    <div className="page">
+      <header>
+        <div className="auth-container">
+          <img className="logo" src="/logo.png" alt="logo" />
+          <h1>ChatApp</h1>
+        </div>
+      </header>
       <div className="form-container">
         <div className="app-name">
-          <p>Chat app</p>
+          <p>LOGIN</p>
         </div>
         <form onSubmit={(e) => clicked(e, nav)}>
           <label htmlFor="email">Email</label>
@@ -70,11 +74,11 @@ const Login = () => {
             <label htmlFor="show-pass">show password </label>
           </div>
           <Link to="/signup">create accout</Link>
-          <input type="submit" value="login" />
+          <input type="submit" value="let me in!" />
         </form>
       </div>
-      <ToastContainer/>
-    </>
+      <ToastContainer />
+    </div>
   );
 };
 export default Login;

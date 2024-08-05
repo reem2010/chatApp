@@ -1,4 +1,3 @@
-// i need chat to contain id, name
 export const getChats = async () => {
   const res = await fetch(`${import.meta.env.VITE_Host}chats/`, {
     credentials: "include",
@@ -8,7 +7,7 @@ export const getChats = async () => {
 };
 
 export const deleteChat = async (chatId) => {
-  const res = await fetch(`${import.meta.env.VITE_Host}chats/${chatId}`, {
+  await fetch(`${import.meta.env.VITE_Host}chats/${chatId}`, {
     credentials: "include",
     method: "DELETE",
     headers: {
@@ -18,7 +17,7 @@ export const deleteChat = async (chatId) => {
 };
 
 export const createChat = async (data) => {
-  const res = await fetch(`${import.meta.env.VITE_Host}chats/`, {
+  await fetch(`${import.meta.env.VITE_Host}chats/`, {
     credentials: "include",
     method: "POST",
     headers: {

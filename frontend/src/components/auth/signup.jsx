@@ -1,5 +1,6 @@
-import "../../style/signup.css";
+import "./styles/auth.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 async function clicked(e, nav) {
   e.preventDefault();
   const email = e.target.children.email.value;
@@ -44,41 +45,48 @@ async function clicked(e, nav) {
     });
     let data = post;
     if (data.status === 400) {
-      const p = document.createElement("p")
-      p.innerHTML = 'data.message'
-      const form_ele = document.querySelector(".form-container")
-      form_ele.append(p)
-      return
-    }
-    else if (data.status == 201) {
+      const p = document.createElement("p");
+      p.innerHTML = "data.message";
+      const form_ele = document.querySelector(".form-container");
+      form_ele.append(p);
+      return;
+    } else if (data.status == 201) {
       nav("/home");
     }
   }
   post_data();
 }
 async function for_login_path(nav) {
-  console.log('done')
-  nav('/')
+  console.log("done");
+  nav("/");
 }
 const SignUp = () => {
   const nav = useNavigate();
   return (
-    <div className="form-container">
-      <div className="app-name">
-        <p>Chat app</p>
+    <div className="page">
+      <header>
+        <div className="auth-container">
+          <img className="logo" src="/logo.png" alt="logo" />
+          <h1>ChatApp</h1>
+        </div>
+      </header>
+      <div className="form-container">
+        <div className="app-name">
+          <p>Sign Up</p>
+        </div>
+        <form onSubmit={(e) => clicked(e, nav)}>
+          <label htmlFor="user">Username</label>
+          <input type="text" id="user" required />
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" min="10" required />
+          <label htmlFor="pass">Password</label>
+          <input type="password" min="8" max="50" id="pass" required />
+          <label htmlFor="check-pass">re-password</label>
+          <input type="password" min="8" max="50" id="checkpass" required />
+          <input type="submit" value="Start Chatting" />
+        </form>
+        <Link to="/">Already have an account</Link>
       </div>
-      <form onSubmit={(e) => clicked(e, nav)}>
-        <label htmlFor="user">Username</label>
-        <input type="text" id="user" required />
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" min="10" required />
-        <label htmlFor="pass">Password</label>
-        <input type="password" min="8" max="50" id="pass" required />
-        <label htmlFor="check-pass">re-password</label>
-        <input type="password" min="8" max="50" id="checkpass" required />
-        <input type="submit" value="signup" />
-      </form>
-      <a onClick={()=>for_login_path(nav)}>Login page</a>
     </div>
   );
 };

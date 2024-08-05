@@ -1,85 +1,100 @@
 .chatBody {
-    /* max-height: 500px; */
-    display: grid;
-    grid-template-rows: 40px 1fr  50px;
-    padding: 10px;
+  flex-grow: 1;
+  align-self: center;
+  display: grid;
+  grid-template-rows: 40px 1fr 50px;
+  padding: 10px;
 }
 
 .chatInput {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .msgInput {
-    min-width: 50vw;
-    min-height: 30px;
-    border-radius: 5px;
-    padding: 8px;
-    background: #443d3d;
-    outline: none;
-    border: none;
+  min-width: 50vw;
+  min-height: 30px;
+  border-radius: 5px;
+  padding: 8px;
+  background: #443d3d;
+  outline: none;
+  border: none;
 }
 
 .smile {
-    background-color: black;
-    border: 0;
-    cursor: pointer;
-    font-size: larger;
-    color: yellow;
-    width: 50px;
-    max-height: 30px;
-    margin-top: 5px
+  background-color: black;
+  border: 0;
+  cursor: pointer;
+  font-size: larger;
+  color: yellow;
+  width: 50px;
+  max-height: 30px;
+  margin-top: 5px;
 }
 
 .msg-send {
-    border-radius: 5px;
-    min-height: 30px;
-    width: 33px;
-    background: #443d3d;
-    outline: none;
-    border: none;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    cursor: pointer;
+  border-radius: 5px;
+  min-height: 30px;
+  width: 33px;
+  background: #443d3d;
+  outline: none;
+  border: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
+.you {
+  text-align: end;
+}
 .emoji-picker {
-    max-height: 350px;
-    max-width: 250px;
-    display: none;
-    position: fixed !important;
-    bottom: calc(100vh - 85vh) !important;
+  max-height: 350px;
+  max-width: 250px;
+  display: none;
+  bottom: 380px;
 }
 
 .chatBox {
-    background-color: rgb(68, 68, 68);
-    border-radius: 15px;
-    padding: 10px;
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #514a4a #000000;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
+  background-color: rgb(68, 68, 68);
+  border-radius: 15px;
+  margin-top: 10px;
+  padding: 10px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #514a4a #000000;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 .me-msg {
-    align-self: flex-end
+  align-self: flex-end;
+  h4 {
+    text-align: end;
+  }
 }
-.sender-name{
-    margin-bottom: 5px;
+.sender-name {
+  margin-bottom: 5px;
 }
-.message{
-    padding: 25px;
-    background: black;
-    margin: 7px;
-    padding: 10px;
-    border-radius: 25px;
-    /* width: 200px; */
-    width: fit-content;
-    min-width: 150px;
+.message {
+  padding: 25px;
+  background: black;
+  margin: 7px;
+  padding: 10px;
+  border-radius: 25px;
+  width: fit-content;
+  max-width: 60%;
+  min-width: 150px;
+  p {
+    overflow: hidden;
+    overflow-wrap: break-word;
+  }
+}
+@media screen and (max-width: 600px) {
+  .chatBox {
+    margin-top: 40px;
+  }
 }

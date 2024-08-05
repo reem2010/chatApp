@@ -6,7 +6,6 @@ import { BsEmojiSmileFill } from "react-icons/bs";
 import "./styles/body.css";
 
 const ChatBody = ({ chatData, socket }) => {
-  
   const [msg, setMsg] = useState("");
   const [msgrec, setMsgrec] = useState(false);
   const [visible, setvisible] = useState(false);
@@ -17,54 +16,62 @@ const ChatBody = ({ chatData, socket }) => {
     setMsg(newmsg);
   };
   const handleSubmit = async () => {
-    if(chatData){
+    if (chatData) {
       await createMessage({
         chatId: chatData.chatId,
         content: msg,
-      })
-      socket.current.emit('send-msg', {to: chatData.to, msg: msg})
-      setupdate(!update)
+      });
+      socket.current.emit("send-msg", { to: chatData.to, msg: msg });
+      setupdate(!update);
     }
     setMsg("");
   };
 
   useEffect(() => {
-    if(chatData){
+    if (chatData) {
       getMessages(chatData.chatId).then((msgs) => {
-        setmessages(msgs)
-      })
+        setmessages(msgs);
+      });
     }
-    
-  },[update, chatData, msgrec]);
+  }, [update, chatData, msgrec]);
 
   useEffect(() => {
-    const ele = document.querySelector('.chatBox');
-    messages &&  ele.scroll({
-      top: ele.scrollHeight + 20,
-      behavior: 'smooth'
+    const ele = document.querySelector(".chatBox");
+    messages &&
+      ele.scroll({
+        top: ele.scrollHeight + 20,
+        behavior: "smooth",
       });
-  }, [messages])  
+  }, [messages]);
   useEffect(() => {
-    if(socket.current){
-      socket.current.on('msg-recieve', (msg) => {
-        setupdate(!update)
-      })
+    if (socket.current) {
+      socket.current.on("msg-recieve", (msg) => {
+        setupdate(!update);
+      });
     }
-  })
+  });
   return (
     <div className="chatBody">
-      <div className="chat-name">
+      <div className="chat-name chat-title">
         {chatData ? <h3>{chatData.chatName}</h3> : <h3>No selected chat</h3>}
       </div>
       <div className="chatBox">
-        {messages && messages.map(mes => {
-          const plusClass = mes.userId === +localStorage.getItem('userId') ? 'me-msg' : ""
-          const classes = "message"+ " " + plusClass
-          return (<div className={ classes } key={mes.id}>
-            <h4 className="sender-name">{mes.userId === +localStorage.getItem('userId')? "you" : mes.user.name}</h4>
-            <p>{mes.content}</p>
-          </div>)
-        })}
+        {messages &&
+          messages.map((mes) => {
+            const plusClass =
+              mes.userId === +localStorage.getItem("userId") ? "me-msg" : "";
+            const classes = "message" + " " + plusClass;
+            return (
+              <div className={classes} key={mes.id}>
+                <h4 className="sender-name">
+                  {mes.userId === +localStorage.getItem("userId")
+                    ? "you"
+                    : mes.user.name}
+                </h4>
+                <p>{mes.content}</p>
+              </div>
+            );
+          })}
       </div>
       <div className="chatInput">
         <div className="smile">

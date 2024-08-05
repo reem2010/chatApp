@@ -2,20 +2,18 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: "Roboto";
   margin: 0;
 }
 
 .Home {
   background-color: black;
-  display: grid;
-  height: 100vh !important;
-  grid-template-rows: 70px 1fr;
+  min-height: 100vh;
   overflow: hidden;
 }
 
 .home-content {
+  min-height: calc(100vh - 70px);
   color: white;
-  display: grid;
-  /* max-height: 500px; */
-  grid-template-columns: minmax(250px, auto) 1fr;
+  display: flex;
 }

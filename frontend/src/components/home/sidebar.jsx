@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getChats, deleteChat, createChat } from "./data/chat";
 import "./styles/sidebar.css";
 
-export const Sidebar = ({ updateSelectedChat }) => {
+export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
   const [chats, setchat] = useState(null);
   const [visible, setvisible] = useState({});
   const [selected, setselected] = useState({});
@@ -17,7 +17,6 @@ export const Sidebar = ({ updateSelectedChat }) => {
   const handleDelete = async (chatId) => {
     const res = await deleteChat(chatId);
     setupdate(!update);
-    setblur(false);
   };
   const handleCreate = async () => {
     const data = { recieverEmail: recEmail };
@@ -25,7 +24,7 @@ export const Sidebar = ({ updateSelectedChat }) => {
     setupdate(!update);
   };
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${closed ? "closed" : ""}`}>
       <h3 className="chat-title">Chats</h3>
       <div className="new-chat">
         <input
@@ -48,13 +47,13 @@ export const Sidebar = ({ updateSelectedChat }) => {
               key={chat.id}
               className={`chat-name ${selected[chat.id] ? "selected" : ""}`}
               onClick={() => {
-                console.log(chat)
                 updateSelectedChat({
                   chatName: chat.name,
                   chatId: chat.id,
-                  to: chat.to
+                  to: chat.to,
                 });
                 setselected({ [chat.id]: true });
+                closeSidebar(true);
               }}
             >
               <div
@@ -67,6 +66,8 @@ export const Sidebar = ({ updateSelectedChat }) => {
                   className="del-conf-but"
                   onClick={() => {
                     handleDelete(chat.id);
+                    setvisible({ [`${chat.id}-del`]: false });
+                    setblur(false);
                   }}
                 >
                   delete
@@ -74,8 +75,8 @@ export const Sidebar = ({ updateSelectedChat }) => {
                 <button
                   className="del-cancel"
                   onClick={() => {
-                    setblur(false);
                     setvisible({ [`${chat.id}-del`]: false });
+                    setblur(false);
                   }}
                 >
                   cancel

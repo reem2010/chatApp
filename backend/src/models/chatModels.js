@@ -62,8 +62,7 @@ export const deleteChat = async (chatId) => {
       },
     });
     return true;
-  } catch (err){
-    console.log(err)
+  } catch (err) {
     return null;
   }
 };

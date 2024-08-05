@@ -9,6 +9,10 @@ export async function createUser(userData) {
 export async function get_user(email) {
   return await prisma.user.findUnique({ where: { email: email } });
 }
+
+export async function getById(id) {
+  return await prisma.user.findUnique({ where: { id: id } });
+}
 export async function deleteUser(userEmail, userPassword) {
   if (
     await prisma.user.findUnique({

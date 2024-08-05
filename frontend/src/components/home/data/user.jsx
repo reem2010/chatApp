@@ -1,7 +1,17 @@
 export const getUser = async () => {
-  res = await fetch(`${import.meta.env.VITE_Host}`, {
+  const res = await fetch(`${import.meta.env.VITE_Host}auth`, {
     credentials: "include",
   });
-  user = await res.json();
+  const user = await res.json();
   return user;
+};
+
+export const logout = async () => {
+  const res = await fetch(`${import.meta.env.VITE_Host}auth/logout`, {
+    credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };

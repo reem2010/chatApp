@@ -1,0 +1,87 @@
+.page {
+  background-color: #000000f5;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  header {
+    color: cadetblue;
+    border-bottom: 1px solid rgb(11, 19, 140);
+    margin-bottom: 15px;
+    .auth-container {
+      height: 100%;
+      width: 80%;
+      margin: auto;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.logo {
+  height: 50px;
+}
+.form-container {
+  width: 450px;
+  background-color: transparent;
+  box-shadow: 1px 1px 6px 1px rgb(11, 19, 140);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+}
+.form-container .app-name {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.form-container .app-name p {
+  font-size: 30px;
+  font-weight: bold;
+  color: cadetblue;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container a {
+  color: rgb(85, 85, 229);
+  text-decoration: none;
+  display: block;
+  margin-top: 13px;
+  font-size: 17px;
+}
+
+form input {
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  height: 30px;
+}
+
+form input[type="submit"] {
+  font-size: 19px;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 50%;
+  margin: 5px auto;
+  background-color: black;
+  color: white;
+  box-shadow: 1px 0.5px 1px 1px #ffffff7d;
+}
+
+form input[type="submit"]:hover {
+  opacity: 70%;
+}
+
+form input[type="checkbox"] {
+  height: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 90%;
+  }
+}
