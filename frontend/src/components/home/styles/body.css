@@ -93,7 +93,7 @@
     overflow-wrap: break-word;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
   .chatBox {
     margin-top: 40px;
   }

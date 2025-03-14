@@ -1,3 +1,4 @@
+import { ToastContainer, toast } from "react-toastify";
 export const getChats = async () => {
   const res = await fetch(`${import.meta.env.VITE_Host}chats/`, {
     credentials: "include",
@@ -17,7 +18,7 @@ export const deleteChat = async (chatId) => {
 };
 
 export const createChat = async (data) => {
-  await fetch(`${import.meta.env.VITE_Host}chats/`, {
+  return await fetch(`${import.meta.env.VITE_Host}chats/`, {
     credentials: "include",
     method: "POST",
     headers: {

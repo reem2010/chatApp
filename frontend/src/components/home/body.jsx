@@ -4,6 +4,7 @@ import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import "./styles/body.css";
+import { toast } from "react-toastify";
 
 const ChatBody = ({ chatData, socket }) => {
   const [msg, setMsg] = useState("");
@@ -15,7 +16,8 @@ const ChatBody = ({ chatData, socket }) => {
     const newmsg = msg + emoji.emoji;
     setMsg(newmsg);
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (chatData) {
       await createMessage({
         chatId: chatData.chatId,
@@ -23,7 +25,19 @@ const ChatBody = ({ chatData, socket }) => {
       });
       socket.current.emit("send-msg", { to: chatData.to, msg: msg });
       setupdate(!update);
+    } else {
+      toast.error("No chat selected", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
+
     setMsg("");
   };
 
@@ -73,7 +87,7 @@ const ChatBody = ({ chatData, socket }) => {
             );
           })}
       </div>
-      <div className="chatInput">
+      <form className="chatInput" onSubmit={handleSubmit}>
         <div className="smile">
           <BsEmojiSmileFill
             className={`smileIcon`}
@@ -93,10 +107,10 @@ const ChatBody = ({ chatData, socket }) => {
             setMsg(e.target.value);
           }}
         ></input>
-        <button className="msg-send" onClick={handleSubmit}>
+        <button type="submit" className="msg-send">
           <IoMdSend />
         </button>
-      </div>
+      </form>
     </div>
   );
 };

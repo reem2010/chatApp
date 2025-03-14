@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getChats, deleteChat, createChat } from "./data/chat";
+import { toast } from "react-toastify";
 import "./styles/sidebar.css";
 
 export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
@@ -18,15 +19,29 @@ export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
     const res = await deleteChat(chatId);
     setupdate(!update);
   };
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
     const data = { recieverEmail: recEmail };
-    await createChat(data);
+    let res = await createChat(data);
+    if (!res.ok) {
+      let body = await res.json();
+      toast.error(body.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     setupdate(!update);
   };
   return (
     <div className={`sidebar ${closed ? "closed" : ""}`}>
       <h3 className="chat-title">Chats</h3>
-      <div className="new-chat">
+      <form className="new-chat" onSubmit={handleCreate}>
         <input
           type="text"
           placeholder="Email you want to chat with.."
@@ -36,10 +51,10 @@ export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
             setrecEmail(ev.target.value);
           }}
         ></input>
-        <button className="add-mem" onClick={handleCreate}>
+        <button type="submit" className="add-mem">
           add
         </button>
-      </div>
+      </form>
       <ul className="chats-menu">
         {chats &&
           chats.map((chat) => (

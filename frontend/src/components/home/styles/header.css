@@ -49,7 +49,7 @@
 .logout:hover {
   opacity: 70%;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
   .container {
     width: 95%;
     h2 {

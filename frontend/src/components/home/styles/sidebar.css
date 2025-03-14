@@ -46,6 +46,10 @@
   align-items: center;
   font-size: 19px;
 }
+.chat-name span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .del-but {
   background-color: black;
@@ -153,13 +157,22 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 600px) {
+@media (width < 920px) {
+  .sidebar {
+    min-width: 250px;
+  }
+  .add-field {
+    margin-right: 15px;
+  }
+}
+@media screen and (max-width: 720px) {
   .sidebar {
     position: fixed;
     min-width: 100%;
-    min-height: 100%;
+    top: 70px;
     background-color: #000000;
     margin: 0;
+    overflow: auto;
   }
   .closed {
     display: none;

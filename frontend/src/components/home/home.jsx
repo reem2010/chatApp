@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import HomeHead from "./header";
 import { Sidebar } from "./sidebar";
+import { ToastContainer } from "react-toastify";
 import ChatBody from "./body";
 import "./styles/home.css";
 import io from "socket.io-client";
@@ -31,6 +32,7 @@ const Home = () => {
         />
         <ChatBody chatData={chatData} socket={socket} />
       </div>
+      <ToastContainer />
     </div>
   );
 };
