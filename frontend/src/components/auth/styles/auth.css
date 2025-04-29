@@ -1,87 +1,152 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .page {
-  background-color: #000000f5;
+  background-color: var(--surface);
+  width: 100vw;
   min-height: 100vh;
   display: grid;
   grid-template-rows: 100px 1fr;
-  header {
-    color: cadetblue;
-    border-bottom: 1px solid rgb(11, 19, 140);
-    margin-bottom: 15px;
-    .auth-container {
-      height: 100%;
-      width: 80%;
-      margin: auto;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-    }
-  }
 }
+
+.page header {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 15px;
+  padding: 0 20px;
+  color: var(--text-primary);
+}
+
+.page header .auth-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo {
   height: 50px;
 }
+
 .form-container {
   width: 450px;
-  background-color: transparent;
-  box-shadow: 1px 1px 6px 1px rgb(11, 19, 140);
-  color: white;
+  background-color: var(--surface);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+  color: var(--text-primary);
   padding: 20px;
   border-radius: 10px;
   margin: auto;
+  max-height: calc(100%-20px);
+  flex-grow: 1;
 }
+
 .form-container .app-name {
-  margin: 0 auto;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
+
 .form-container .app-name p {
   font-size: 30px;
   font-weight: bold;
-  color: cadetblue;
+  color: var(--primary);
 }
 
 .form-container form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
+}
+
+label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--text-secondary);
+  border-radius: 6px;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.3s;
+}
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary);
+}
+
+input[type="submit"] {
+  width: 50%;
+  align-self: center;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 8px;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--primary-dark);
 }
 
 .form-container a {
-  color: rgb(85, 85, 229);
+  font-size: 0.9rem;
+  color: var(--primary);
   text-decoration: none;
   display: block;
-  margin-top: 13px;
-  font-size: 17px;
+  text-align: center;
+  margin-top: 10px;
 }
 
-form input {
-  border-radius: 3px;
-  outline: none;
-  border: none;
-  height: 30px;
+a:hover {
+  text-decoration: underline;
 }
 
-form input[type="submit"] {
-  font-size: 19px;
-  cursor: pointer;
-  border-radius: 10px;
-  width: 50%;
-  margin: 5px auto;
-  background-color: black;
-  color: white;
-  box-shadow: 1px 0.5px 1px 1px #ffffff7d;
+.form-container p.error {
+  font-size: 0.9rem;
+  color: var(--error);
+  margin-top: 5px;
 }
 
-form input[type="submit"]:hover {
-  opacity: 70%;
+.Toastify__toast {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
 }
 
-form input[type="checkbox"] {
-  height: fit-content;
+.Toastify__toast--error {
+  border-left: 4px solid var(--error) !important;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid var(--primary) !important;
 }
 
 @media screen and (max-width: 600px) {
   .form-container {
     width: 90%;
+    padding: 15px;
   }
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getChats, deleteChat, createChat } from "./data/chat";
 import { toast } from "react-toastify";
-import "./styles/sidebar.css";
 
 export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
   const [chats, setchat] = useState(null);

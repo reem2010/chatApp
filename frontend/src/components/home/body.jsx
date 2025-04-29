@@ -3,7 +3,6 @@ import { getMessages, createMessage } from "./data/message";
 import Picker from "emoji-picker-react";
 import { IoMdSend } from "react-icons/io";
 import { BsEmojiSmileFill } from "react-icons/bs";
-import "./styles/body.css";
 import { toast } from "react-toastify";
 
 const ChatBody = ({ chatData, socket }) => {

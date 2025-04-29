@@ -5,10 +5,12 @@ import { ToastContainer } from "react-toastify";
 import ChatBody from "./body";
 import "./styles/home.css";
 import io from "socket.io-client";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [chatData, setChatData] = useState(null);
   const [closed, setClosed] = useState(false);
+  const navigate = useNavigate();
 
   const closeSidebar = (val) => {
     setClosed(val);
@@ -18,6 +20,10 @@ const Home = () => {
   };
   const socket = useRef();
   useEffect(() => {
+    if (!localStorage.getItem("userId")) {
+      console.log("hi");
+      navigate("/");
+    }
     socket.current = io(import.meta.env.VITE_Host);
     socket.current.emit("add-user", localStorage.getItem("userId"));
   }, []);

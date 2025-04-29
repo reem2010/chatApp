@@ -57,7 +57,6 @@ export const register = async (req, res) => {
         sameSite: "none",
         partitioned: true,
       };
-      console.log(token);
       res.cookie("token", token, cookieOptions);
       res.status(201).json({ message: "User registered successfully" });
     }

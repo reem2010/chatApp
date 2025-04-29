@@ -16,6 +16,7 @@ async function clicked(e, nav) {
   const email = e.target.children.email.value;
   const pass = e.target.children.pass.value;
   async function post_data() {
+    const id = toast.loading("Logging in...");
     let post = await fetch(`${import.meta.env.VITE_Host}auth/login`, {
       credentials: "include",
       method: "POST",
@@ -33,17 +34,19 @@ async function clicked(e, nav) {
       const user = await data.json();
       const userId = user.userId;
       localStorage.setItem("userId", userId);
+      toast.update(id, {
+        render: `Logged in successfully`,
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
       nav("/home");
     } else {
-      toast.error("email or password is wrong", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
+      toast.update(id, {
+        render: `Incorrect email or password`,
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
       });
     }
   }
@@ -55,7 +58,7 @@ const Login = () => {
     <div className="page">
       <header>
         <div className="auth-container">
-          <img className="logo" src="/logo.png" alt="logo" />
+          <img className="logo" src="/logo2.png" alt="logo" />
           <h1>ChatApp</h1>
         </div>
       </header>
@@ -76,7 +79,7 @@ const Login = () => {
           <input type="submit" value="let me in!" />
         </form>
       </div>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

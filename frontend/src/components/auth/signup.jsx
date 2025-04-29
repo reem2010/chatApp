@@ -1,6 +1,7 @@
-import "./styles/auth.css";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+
 async function clicked(e, nav) {
   e.preventDefault();
   const email = e.target.children.email.value;
@@ -30,6 +31,8 @@ async function clicked(e, nav) {
     if (pass.length < 8 || pass != virfy_pass || email < 10) {
       return;
     }
+    const id = toast.loading("Registering you");
+
     let post = await fetch(`${import.meta.env.VITE_Host}auth/register`, {
       credentials: "include",
       method: "POST",
@@ -44,12 +47,13 @@ async function clicked(e, nav) {
       }),
     });
     let data = post;
-    if (data.status === 400) {
-      const p = document.createElement("p");
-      p.innerHTML = "data.message";
-      const form_ele = document.querySelector(".form-container");
-      form_ele.append(p);
-      return;
+    if (data.status != 201) {
+      toast.update(id, {
+        render: `An error occured while registering you`,
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
     } else if (data.status == 201) {
       nav("/home");
     }
@@ -66,7 +70,7 @@ const SignUp = () => {
     <div className="page">
       <header>
         <div className="auth-container">
-          <img className="logo" src="/logo.png" alt="logo" />
+          <img className="logo" src="/logo2.png" alt="logo" />
           <h1>ChatApp</h1>
         </div>
       </header>
@@ -87,6 +91,7 @@ const SignUp = () => {
         </form>
         <Link to="/">Already have an account</Link>
       </div>
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };
