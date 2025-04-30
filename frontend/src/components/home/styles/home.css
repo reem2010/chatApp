@@ -85,6 +85,7 @@
 .chat-name span {
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-grow: 1;
 }
 
 .del-but {
@@ -133,13 +134,16 @@
   border: none;
   border-radius: 5px;
   color: #fff;
+  margin-top: 10px;
 }
 
 .del-conf button:hover,
 .del-cancel:hover {
   opacity: 0.8;
 }
-
+.del-cancel {
+  margin-left: 5px;
+}
 .blur {
   position: fixed;
   top: 0;

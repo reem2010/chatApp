@@ -60,15 +60,6 @@ export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
             <li
               key={chat.id}
               className={`chat-name ${selected[chat.id] ? "selected" : ""}`}
-              onClick={() => {
-                updateSelectedChat({
-                  chatName: chat.name,
-                  chatId: chat.id,
-                  to: chat.to,
-                });
-                setselected({ [chat.id]: true });
-                closeSidebar(true);
-              }}
             >
               <div
                 className={`del-conf ${
@@ -96,7 +87,19 @@ export const Sidebar = ({ updateSelectedChat, closeSidebar, closed }) => {
                   cancel
                 </button>
               </div>
-              <span>{chat.name}</span>
+              <span
+                onClick={() => {
+                  updateSelectedChat({
+                    chatName: chat.name,
+                    chatId: chat.id,
+                    to: chat.to,
+                  });
+                  setselected({ [chat.id]: true });
+                  closeSidebar(true);
+                }}
+              >
+                {chat.name}
+              </span>
 
               <button
                 className="del-but"
